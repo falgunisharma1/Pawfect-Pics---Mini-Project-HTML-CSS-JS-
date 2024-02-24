@@ -3,17 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
-    <h1 id="name">Pawfect Pics</h1>
-    <label for="dog-breed">Breed:</label> 
-    <select id="arrayDropdown" name="dog-breed" id="dog-breed"> 
-        <option></option> 
+    <h1 id="name">Pawfect Pics</h1><br>
+    <div id="dropdown"></div>
+    <label for="dog-breed">Breed:</label>
+    <select id="arrayDropdown" name="dog-breed" id="dog-breed">
+      <option></option>
     </select>
-    <p id="test"></p>
+    <p id="test">djhbfjhefhjbae</p><br>
+    <div id="imageCarousel">
+      <button id="btnLeft"><h1><</h1></button>
+      <img
+        src="https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg"
+        id="slide"
+      />
+      <button id="btnRight"><h1>></h1></button>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
-
-

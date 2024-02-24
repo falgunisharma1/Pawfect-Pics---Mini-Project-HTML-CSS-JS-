@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+  padding: 5%;
+  justify-content: center; 
+}
+
+h1 {
+  text-align: center;
+  flex-direction: column;
+
+}
+
+#dropdown {
+  
+
+}
+
+
+
+#imageCarousel {
+  max-width: 300px;
+  height: 300px;
+  justify-content: center;
+  flex-direction: row;
+}
+
+
+
+
