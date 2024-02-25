@@ -1,35 +1,98 @@
 body {
-  display: flex;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" 0;
-  padding: 5%;
-  justify-content: center; 
-}
-
-h1 {
-  text-align: center;
-  flex-direction: column;
-
-}
-
-#dropdown {
+  background-color: rgb(165, 158, 217);
   
-
 }
 
 
-
-#imageCarousel {
-  max-width: 300px;
-  height: 300px;
+.all-the-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  flex-direction: row;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  margin: 0px 100px 0px 100px;
 }
 
+/* Heading styles */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
 
+/* Flex container for label and dropdown */
+.label-dropdown-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 450px;
+}
 
+/* Label styles */
+label {
+  margin-right: 10px; /* Add some space between label and dropdown */
+}
+
+/* Select styles */
+select {
+  padding: 10px; /* Add padding */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Add border radius */
+  font-size: 1rem; /* Set font size */
+  width: 100%;
+  width: 300px;
+}
+
+/* Paragraph styles */
+p {
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image carousel container styles */
+#imageCarousel {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  display: flex;
+  padding: 20px;
+}
+
+/* Image styles */
+img {
+  max-width: 400px;
+  max-height: 350px;
+  min-width: 400px;
+  min-height: 350px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #e9e6e6;
+  margin: 10px 10px 30px 10px;
+}
+
+/* Button styles */
+button {
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: #8066bc;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+#btnLeft:disabled {
+  color: #8066bca2;
+  cursor: not-allowed;
+}
+
+#btnRight:disabled {
+  color: #8066bca2;
+  cursor: not-allowed;
+}
 
