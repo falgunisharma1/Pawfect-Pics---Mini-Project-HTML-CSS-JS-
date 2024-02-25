@@ -27,7 +27,12 @@ fetch("https://dog.ceo/api/breeds/list/all")
     document.getElementById("arrayDropdown").innerHTML = options;
 
     bringAllDogPictures();
+
+    document.querySelector(
+      "#intro"
+    ).textContent = `Please choose a breed of your choice to enjoy cute doggie images.`;
   });
+
 
 //api fetching all the images of dog for each breed in an object of arrays.
 
@@ -50,25 +55,35 @@ function bringAllDogPictures() {
   }
 }
 
-console.log(allImages);
-
 //what will happen when the breed is chosen
 
 const selectElement = document.querySelector("#arrayDropdown");
 var selectedBreed;
 
 function handleBreedSelect(event) {
-  document.querySelector(
-    "#test"
-  ).textContent = `The breed selected is ${event.target.value}`;
   selectedBreed = event.target.value;
+  if(selectedBreed !== ""){
+  document.getElementById('imageCarousel').style.visibility = 'visible'
+  document.querySelector(
+    "#intro"
+  ).textContent = `Here are all the cute ${event.target.value}s.`;
   setImage();
+  } else {
+    document.querySelector(
+      "#intro"
+    ).textContent = `Please choose a breed of your choice to enjoy cute doggie images.`;
+    document.getElementById('imageCarousel').style.visibility = 'hidden'
+  }
 }
 
 function setImage() {
   let breedType = selectedBreed;
   document.getElementById("slide").src = allImages[breedType][0];
   left.disabled = true;
+}
+
+function addToFav (){
+  
 }
 
 //Add Event listener when breed is chosen from dropdown
@@ -107,3 +122,4 @@ function previousImage() {
 
 right.addEventListener("click", nextImage);
 left.addEventListener("click", previousImage);
+
