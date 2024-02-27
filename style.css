@@ -32,8 +32,10 @@ h1 {
 }
 
 #goBack {
-  margin-bottom: 30px;
   visibility: hidden;
+  margin-bottom: 30px;
+  color: #533795;
+  text-decoration: underline;
   border: none;
   cursor: pointer;
   align-items: center;
