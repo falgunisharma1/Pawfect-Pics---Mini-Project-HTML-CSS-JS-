@@ -1,13 +1,7 @@
-// Get all the breed data all at once
-// Get the image data all at once as well so that less requests
-//creating an array containing all the images for each specific breed right when the page loads. - done
-//create an empty array for list of breeds in dropdown
-//use that list and store that in an object and fetch all the images for each breed.
-
 var emptyObj = {};
 var listOfBreeds = [""];
 var options = ""; //for creating a list of options for breed names
-
+const favDogs = {};
 let right = document.getElementById("btnRight");
 let left = document.getElementById("btnLeft");
 
@@ -32,7 +26,6 @@ fetch("https://dog.ceo/api/breeds/list/all")
       "#intro"
     ).textContent = `Please choose a breed of your choice to enjoy cute doggie images.`;
   });
-
 
 //api fetching all the images of dog for each breed in an object of arrays.
 
@@ -62,33 +55,69 @@ var selectedBreed;
 
 function handleBreedSelect(event) {
   selectedBreed = event.target.value;
-  if(selectedBreed !== ""){
-  document.getElementById('imageCarousel').style.visibility = 'visible'
-  document.querySelector(
-    "#intro"
-  ).textContent = `Here are all the cute ${event.target.value}s.`;
-  setImage();
+  checkFav();
+
+  if (selectedBreed !== "") {
+    document.getElementById("imageCarousel").style.visibility = "visible";
+    document.querySelector("#intro").textContent = ``;
+    setImage();
+    document.getElementById("fav").style.visibility = "visible";
   } else {
     document.querySelector(
       "#intro"
     ).textContent = `Please choose a breed of your choice to enjoy cute doggie images.`;
-    document.getElementById('imageCarousel').style.visibility = 'hidden'
+    document.getElementById("imageCarousel").style.visibility = "hidden";
+    document.getElementById("fav").style.visibility = "hidden";
   }
 }
 
+function checkFav() {
+  if (favDogs[selectedBreed]) {
+    document.getElementById("fav").style.color = "#fbe309";
+  } else {
+    document.getElementById("fav").style.color = "#c1b4dd";
+  }
+}
 function setImage() {
   let breedType = selectedBreed;
   document.getElementById("slide").src = allImages[breedType][0];
   left.disabled = true;
 }
 
-function addToFav (){
-  
+function addToFav() {
+  document.getElementById("fav").style.color = "#fbe309";
+  favDogs[selectedBreed] = allImages[selectedBreed];
+  console.log(favDogs)
 }
 
-//Add Event listener when breed is chosen from dropdown
+let favElement = "";
 
+function handleFavLinkClick() {
+  document.getElementById('name').textContent='List of all your favourite pups:';
+  document.getElementById('labelBreed').textContent='Favourite Breeds'
+  document.getElementById('favLink').textContent = ''
+  document.getElementById('goBack').style.visibility='visible'
+  document.getElementById('intro').textContent= ''
+
+  for (let key in favDogs) {
+   favElement = favElement + `<option value="${key}">${key}</options>`
+  }
+
+  document.getElementById('arrayDropdown').innerHTML = favElement;
+  document.getElementById('fav').style.visibility = 'hidden';
+}
+
+//Add Event listener when breed is chosen from dropdown:
 selectElement.addEventListener("change", handleBreedSelect);
+
+//Add Event Listener when breed is marked favourite:
+document.getElementById("fav").addEventListener("click", addToFav);
+
+document
+  .getElementById("favLink")
+  .addEventListener("click", handleFavLinkClick);
+
+// document.getElementById('goBack').addEventListener('click', )
 
 function nextImage() {
   let imageUrl = document.getElementById("slide").src;
@@ -122,4 +151,3 @@ function previousImage() {
 
 right.addEventListener("click", nextImage);
 left.addEventListener("click", previousImage);
-

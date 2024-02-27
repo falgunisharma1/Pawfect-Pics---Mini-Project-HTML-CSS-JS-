@@ -16,8 +16,29 @@ body {
 /* Heading styles */
 h1 {
   font-size: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   color: #533795;
+}
+
+#favLink {
+  margin-bottom: 10px;
+  text-decoration: underline;
+  color: #533795;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
+}
+
+#goBack {
+  margin-bottom: 30px;
+  visibility: hidden;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
 }
 
 /* Flex container for label and dropdown */
@@ -28,7 +49,7 @@ h1 {
   justify-content: space-between;
   margin-bottom: 20px;
   width: 450px;
-  color:#533795;
+  color: #533795;
   font-weight: bolder;
 }
 
@@ -45,6 +66,12 @@ select {
   font-size: 1rem; /* Set font size */
   width: 100%;
   width: 300px;
+}
+
+#fav {
+  visibility: hidden;
+  color:#c1b4dd;
+  border-top-right-radius: 2%;
 }
 
 /* Paragraph styles */
