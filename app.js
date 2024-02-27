@@ -1,18 +1,19 @@
 let emptyObj = {};
 let listOfBreeds = [""];
 let options = ""; //for creating a list of options for breed names
-const favDogs = {'': ''};
+const favDogs = { "": "" };
+
 let right = document.getElementById("btnRight");
 let left = document.getElementById("btnLeft");
-let pageTitle = document.getElementById("name")
-let dropdownLabel = document.getElementById("labelBreed")
-let linkToFav = document.getElementById("favLink")
-let goBackLink = document.getElementById("goBack")
-let descrip = document.getElementById("intro")
-let imageCarousel = document.getElementById('imageCarousel')
-let favButtonStar = document.getElementById("fav")
-let image = document.getElementById("slide")
-let breedDropdown = document.getElementById("arrayDropdown")
+let pageTitle = document.getElementById("name");
+let dropdownLabel = document.getElementById("labelBreed");
+let linkToFav = document.getElementById("favLink");
+let goBackLink = document.getElementById("goBack");
+let descrip = document.getElementById("intro");
+let imageCarousel = document.getElementById("imageCarousel");
+let favButtonStar = document.getElementById("fav");
+let image = document.getElementById("slide");
+let breedDropdown = document.getElementById("arrayDropdown");
 
 //api fetching the list of all dog breeds.
 fetch("https://dog.ceo/api/breeds/list/all")
@@ -82,6 +83,7 @@ function checkFav() {
     favButtonStar.style.color = "#c1b4dd";
   }
 }
+
 function setImage() {
   let breedType = selectedBreed;
   image.src = allImages[breedType][0];
@@ -90,22 +92,19 @@ function setImage() {
 
 function addToFav() {
   favButtonStar.style.color = "#fbe309";
-  if(favDogs[selectedBreed] === undefined){
-  favDogs[selectedBreed] = allImages[selectedBreed];
+  if (favDogs[selectedBreed] === undefined) {
+    favDogs[selectedBreed] = allImages[selectedBreed];
   }
 }
 
-
-
 function handleFavLinkClick() {
   let favElement = "";
-  pageTitle.textContent =
-    "List of all your favourite pups:";
+  pageTitle.textContent = "List of all your favourite pups:";
   dropdownLabel.textContent = "Favourite Breeds:";
   linkToFav.textContent = "";
   goBackLink.style.visibility = "visible";
   descrip.textContent = "";
-  imageCarousel.style.visibility='hidden'
+  imageCarousel.style.visibility = "hidden";
   favButtonStar.style.visibility = "hidden";
 
   for (let key in favDogs) {
@@ -113,7 +112,6 @@ function handleFavLinkClick() {
   }
 
   breedDropdown.innerHTML = favElement;
-  
 }
 
 function handleGoHomePage() {
@@ -122,7 +120,8 @@ function handleGoHomePage() {
   linkToFav.textContent = "Your favourite pups!";
   goBackLink.style.visibility = "hidden";
   descrip.textContent = `Please choose a breed of your choice to enjoy cute doggie images.`;
-  imageCarousel.style.visibility="hidden";
+  imageCarousel.style.visibility = "hidden";
+  favButtonStar.style.visibility = "hidden";
 
   for (let key in allImages) {
     let i = 0;
@@ -163,17 +162,14 @@ function previousImage() {
   }
 }
 
-
 //Add Event listener when breed is chosen from dropdown:
 breedDropdown.addEventListener("change", handleBreedSelect);
 
 //Add Event Listener when breed is marked favourite:
 favButtonStar.addEventListener("click", addToFav);
 
-
 // Add Event listener when Your Favourites link button is clicked
 linkToFav.addEventListener("click", handleFavLinkClick);
-
 
 // Add Event listener when Go Back to home page button is clicked
 goBackLink.addEventListener("click", handleGoHomePage);
