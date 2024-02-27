@@ -1,6 +1,5 @@
 body {
   background-color: rgb(165, 158, 217);
-  
 }
 
 .all-the-elements {
@@ -13,7 +12,30 @@ body {
   margin: 0px 100px 0px 100px;
 }
 
-/* Heading styles */
+@media screen and (max-width: 500px) {
+  .all-the-elements {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  .label-dropdown-container {
+    width: 100%;
+    padding: 40px;
+  }
+
+  #imageCarousel img {
+    max-width: 300px;
+    max-height: 250px;
+    min-width: 150px;
+    min-height: 120px;
+    margin: 5px;
+  }
+
+  button {
+    align-self: center;
+  }
+}
+
 h1 {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -51,29 +73,30 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
-  width: 450px;
+  width: auto;
   color: #533795;
   font-weight: bolder;
 }
 
-/* Label styles */
 label {
-  margin-right: 10px; /* Add some space between label and dropdown */
+  margin-right: 10px;
+  position: relative;
 }
 
-/* Select styles */
 select {
-  padding: 10px; /* Add padding */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 5px; /* Add border radius */
-  font-size: 1rem; /* Set font size */
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
   width: 100%;
   width: 300px;
 }
 
+/* Fav star button */
 #fav {
   visibility: hidden;
-  color:#c1b4dd;
+  color: #c1b4dd;
   border-top-right-radius: 2%;
 }
 
@@ -82,6 +105,7 @@ p {
   margin-bottom: 30px;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 /* Image carousel container styles */
@@ -119,7 +143,6 @@ button {
   font-size: 2rem;
 }
 
-
 #btnLeft:disabled {
   color: #8066bca2;
   cursor: not-allowed;
@@ -132,5 +155,4 @@ button {
 
 #fav:hover::after {
   font-size: small;
-  ;
 }
