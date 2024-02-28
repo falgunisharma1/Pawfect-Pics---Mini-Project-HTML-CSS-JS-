@@ -18,22 +18,26 @@ let breedDropdown = document.getElementById("arrayDropdown");
 //api fetching the list of all dog breeds.
 fetch("https://dog.ceo/api/breeds/list/all")
   .then((res) => res.json())
-  .then((data) => (emptyObj = data.message))
-  .then((emptyObj) => {
-    for (let key in emptyObj) {
-      let breed = key.charAt(0).toUpperCase() + key.slice(1);
-      listOfBreeds.push(breed);
+  .then(
+    (emptyObj) => {
+      for (let key in emptyObj.message) {
+        let breed = key.charAt(0).toUpperCase() + key.slice(1);
+        listOfBreeds.push(breed);
+      }
+      listOfBreeds.map((op, i) => {
+        options = options + `<option value="${op}" id="${i}">${op}</options>`;
+      });
+
+      breedDropdown.innerHTML = options;
+
+      bringAllDogPictures();
+
+      descrip.textContent = `Please choose a breed of your choice to enjoy cute doggie images.`;
+    },
+    (error) => {
+      console.log(error);
     }
-    listOfBreeds.map((op, i) => {
-      options = options + `<option value="${op}" id="${i}">${op}</options>`;
-    });
-
-    breedDropdown.innerHTML = options;
-
-    bringAllDogPictures();
-
-    descrip.textContent = `Please choose a breed of your choice to enjoy cute doggie images.`;
-  });
+  );
 
 //api fetching all the images of dog for each breed in an object of arrays.
 
@@ -47,12 +51,16 @@ function bringAllDogPictures() {
     let dogImages = [];
     fetch(url)
       .then((response) => response.json())
-      .then((data) => (dogImages = data.message))
-      .then((dogImages) => {
-        listOfBreeds[i] =
-          listOfBreeds[i].charAt(0).toUpperCase() + listOfBreeds[i].slice(1);
-        allImages[listOfBreeds[i]] = dogImages;
-      });
+      .then(
+        (dogImages) => {
+          listOfBreeds[i] =
+            listOfBreeds[i].charAt(0).toUpperCase() + listOfBreeds[i].slice(1);
+          allImages[listOfBreeds[i]] = dogImages.message;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }
 
